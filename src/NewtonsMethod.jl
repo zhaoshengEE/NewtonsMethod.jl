@@ -12,6 +12,10 @@ function newtonroot(f, f′; x₀, tol = 1E-7, maxiter = 1000)
         x_new = x_old  - f(x_old)/f′(x_old)
         normdiff = norm(x_new - x_old)
         x_old = x_new
+
+        if(n == maxiter && normdiff > tol)
+            return nothing
+        end
         n += 1
     end
 
@@ -21,7 +25,7 @@ end
 
 function newtonroot(f; x₀, tol = 1E-7, maxiter = 1000)
     f′ = x -> ForwardDiff.derivative(f, x)
-    x_root = newtonroot(f, f′; x₀, tol = 1E-7, maxiter = 1000)
+    x_root = newtonroot(f, f′; x₀, tol, maxiter)
     return x_root
 end
 
