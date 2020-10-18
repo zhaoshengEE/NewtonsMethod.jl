@@ -23,8 +23,8 @@ f(x) = (x-1)^3
 f(x) = (x+1)^2
 @test newtonroot(f;x₀=0.0) == -0.9999999403953552
 
-f(x) = x^5 + 4*x^4 + 3*x^3 + 2*x^2 + x + 1
-@test newtonroot(f;x₀=0.0) == -3.24522908806064
+f(x) = x^3 + x^2 + x - 1
+@test newtonroot(f;x₀=0.0) == 0.5436890126920766
 
 
 # test of finding those roots with a BigFloat and not just a Float64
